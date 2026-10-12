@@ -783,7 +783,6 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
           <dl>
             <div><dt>Where I can contribute</dt><dd>Scripting batch runs and post-processing results so every analysis is repeatable and documented.</dd></div>
           </dl>
-          <button class="export" id="objBtn" type="button"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8M4.5 6.8 8 10.3l3.5-3.5M3 13.5h10"/></svg>Download mesh (.obj)</button>
         </div>
       </article></div>
       <div data-r><article class="area tilt">
@@ -1385,15 +1384,7 @@ const Bone = (function buildBone() {
   addEventListener('resize', () => { S = fitCanvas(cv); if (reduce) render(0); });
 
   /* Export the rest-pose mesh as a Wavefront OBJ (quads, 1-indexed). */
-  $('#objBtn').addEventListener('click', () => {
-    const lines = ['# Procedural long-bone surface mesh', `# ${Bone.V.length} vertices, ${Bone.F.length} quad faces`, 'o long_bone'];
-    Bone.V.forEach(v => lines.push(`v ${v.x.toFixed(5)} ${v.y.toFixed(5)} ${v.z.toFixed(5)}`));
-    Bone.F.forEach(f => lines.push(`f ${f.map(i => i + 1).join(' ')}`));
-    const url = URL.createObjectURL(new Blob([lines.join('\n') + '\n'], { type: 'text/plain' }));
-    const a = Object.assign(document.createElement('a'), { href: url, download: 'long-bone-mesh.obj' });
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  });
+
 })();
 
 /* =========================================================
