@@ -15,7 +15,7 @@ The whole site is `raWebsite.html`. There is no build step, no framework and no 
 5. [The nine chapters](#5-the-nine-chapters)
 6. [CSS sections](#6-css-sections)
 7. [JavaScript modules](#7-javascript-modules)
-8. [3D designs and exports](#8-3d-designs-and-exports)
+8. [3D designs](#8-3d-designs)
 9. [Accessibility, reduced motion and print](#9-accessibility-reduced-motion-and-print)
 10. [Customizing](#10-customizing)
 
@@ -79,13 +79,13 @@ Every chapter is a `<section class="chapter">` with an `id` and a `data-title`. 
 | 2 | `why` | Why this lab | Motivation drawn from the cover letter; three working principles | Word-by-word heading reveal; icons that draw themselves; cards that tilt with the cursor |
 | 3 | `website` | The lab website | Production work at CMIT NYCE and the four-step plan for the lab site | Live editor demo: fields type themselves, **Publish** is pressed, and a new lab member appears on the preview |
 | 4 | `pipeline` | Report automation | The in-development report pipeline, with key figures | Counting statistics; files flow from scattered raw output into a validated grid and then into a report that is written and stamped "Reviewed" |
-| 5 | `framework` | Validation framework | What the pipeline does and its scale, what version one reported, the audit (checking that each test can fail, invariant checks across modules, other findings), and what version two is designed around | Counting simulation total; grade-distribution bars built from the real counts; a permutation-versus-bootstrap demo; invariant bars; version-two items revealed in sequence |
-| 6 | `research` | Research interests | Each defect from the audit mapped to the general research principle it violates | Connectors draw between columns with a travelling marker |
+| 5 | `framework` | Validation framework | What the pipeline does and its scale, what version one reported, my analysis of it (checking that each test can fail, invariant checks across modules, other findings), and what version two is designed around | Counting simulation total; grade-distribution bars built from the real counts; a permutation-versus-bootstrap demo; invariant bars; version-two items revealed in sequence |
+| 6 | `research` | Research interests | Five themes from my own analysis, each mapped to the research question it raises | Connectors draw between columns with a travelling marker |
 | 7 | `fit` | Qualifications | Candid assessment against each requirement in the posting | Level meters fill segment by segment |
 | 8 | `areas` | Research areas | The lab's three research areas and the engineering contribution to each | Segmentation scan, interactive 3D bone mesh, rotating 3D double helix |
 | 9 | `thanks` | Thank you | Closing note and contact links | Word-by-word heading reveal |
 
-All numbers in chapter 5 come from an audit of the version-one code and result files, except the permutation demo, which runs on a synthetic trade list and is labeled as illustrative. The chapter 8 figures are illustrative.
+All numbers in chapter 5 come from my own review of the version-one code and result files, except the permutation demo, which runs on a synthetic trade list and is labeled as illustrative. The chapter 8 figures are illustrative.
 
 ## 6. CSS sections
 
@@ -112,10 +112,10 @@ All script runs inside one IIFE. Every module is independent, so one can be remo
 | **JS 6. Editor demo** | An async loop that types three example lab members into the form, presses Publish, adds a card to the preview, shows a toast, then resets. It pauses whenever the demo is off screen. |
 | **JS 7. Pipeline particles** | Builds 36 file icons. Each has three positions stored as CSS custom properties (scattered, gridded, report). A single CSS keyframe moves them through all three. |
 | **JS 8. Permutation vs bootstrap demo** | Generates a synthetic list of 60 trades with a positive total, split into three regime blocks of 20. **Pass A** shuffles trades within each block 60 times: every equity path passes through the same point at each block boundary and ends at the same total, so the share of profitable runs is always 0% or 100% and the 5th–95th percentile spread of final P&L is $0. **Pass B** resamples trades with replacement, so final P&L spreads out. The two passes alternate, with readouts updated after each. |
-| **JS 9. 3D bone** | Procedural mesh, renderer, drag controls and OBJ export (see below) |
+| **JS 9. 3D bone** | Procedural mesh, renderer and drag controls (see below) |
 | **JS 10. 3D helix** | Rotating double helix with highlighted markers (see below) |
 
-## 8. 3D designs and exports
+## 8. 3D designs
 
 Both 3D figures are drawn on a 2D canvas with a small hand-written renderer. There is no WebGL and no library. Each frame does three things:
 
@@ -145,14 +145,6 @@ This is a visual model of beam bending, not a solved FE analysis.
 - Drag horizontally to turn the bone and vertically to tilt it.
 - When idle, it spins slowly about its own long axis and sways gently.
 - The stress pattern moves with the spin, because the load direction stays fixed in the world.
-
-**Export.** **Download mesh (.obj)** saves `long-bone-mesh.obj`, a Wavefront OBJ of the rest-pose mesh:
-
-- Plain text: `v x y z` lines, followed by 1-indexed quad faces `f a b c d`.
-- Units are normalized; the bone spans −1 to 1 on the x-axis.
-- It opens directly in Blender (**File → Import → Wavefront**), MeshLab, ParaView and most CAD and FE pre-processors.
-- To use it as an FE input, triangulate or remesh it first. Most meshing tools do this on import.
-- To export a finer mesh, raise `NU` and `NV` at the top of `buildBone()`.
 
 ### Double helix (`#helix`, JS 10)
 

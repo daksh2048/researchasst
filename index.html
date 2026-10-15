@@ -116,7 +116,7 @@ body.on-dark .dot{background:rgba(255,255,255,.25)} body.on-dark .dot.active{bac
 .facts{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:32px 0 0;font-size:15px;max-width:780px}
 .facts dt{color:var(--steel)} .facts dd{margin:0}
 
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hint{margin-top:34px;font-size:14px;color:var(--steel)}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font:500 15px var(--sans);text-decoration:none;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
 .btn.primary{background:var(--ink);color:var(--paper)}
 .btn.primary:hover{background:var(--red);border-color:var(--red)}
@@ -127,7 +127,7 @@ body.on-dark .dot{background:rgba(255,255,255,.25)} body.on-dark .dot.active{bac
 @keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
 @media (max-width:760px){
   #mesh{-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.15) 55%,#000 100%);mask-image:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.15) 55%,#000 100%)}
-  .hero{padding-bottom:150px}
+  .hero{padding-bottom:150px}.hint{display:none}
 }
 
 /* =========================================================
@@ -236,7 +236,7 @@ body.on-dark .dot{background:rgba(255,255,255,.25)} body.on-dark .dot.active{bac
 @media (max-width:640px){.pipe{height:230px}.stages{font-size:12.5px}.page{padding:12px 10px;gap:7px}}
 
 /* =========================================================
-   9. CHAPTER 5: VALIDATION AUDIT (DARK)
+   9. CHAPTER 5: VALIDATION FRAMEWORK (DARK)
    ========================================================= */
 .stats{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;margin-top:44px;align-items:start}
 .panel{background:var(--night2);border:1px solid var(--nightline);border-radius:16px;padding:24px;position:relative;overflow:hidden}
@@ -284,8 +284,8 @@ body.on-dark .dot{background:rgba(255,255,255,.25)} body.on-dark .dot.active{bac
 .built{display:grid;grid-template-columns:1.5fr .7fr 1.1fr;gap:16px;margin:18px 0 6px}
 .built b{display:block;font:500 clamp(26px,2.6vw,34px)/1 var(--serif);color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .built span{display:block;margin-top:6px;font-size:12.5px;line-height:1.4;color:var(--fog)}
-.audit-label{grid-column:1 / -1;display:flex;align-items:center;gap:14px;margin:26px 0 2px;font-size:14px;font-weight:600;color:var(--v3)}
-.audit-label::after{content:"";flex:1;height:1px;background:var(--nightline)}
+.section-label{grid-column:1 / -1;display:flex;align-items:center;gap:14px;margin:26px 0 2px;font-size:14px;font-weight:600;color:var(--v3)}
+.section-label::after{content:"";flex:1;height:1px;background:var(--nightline)}
 .findings{list-style:none;margin:14px 0 0;padding:0}
 .findings li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--nightline)}
 .findings b{font-size:14.5px;color:#fff;font-weight:600}
@@ -357,9 +357,6 @@ body.on-dark .dot{background:rgba(255,255,255,.25)} body.on-dark .dot.active{bac
 .area dl{margin:0;display:flex;flex-direction:column;gap:10px;flex:1}
 .area dt{font-size:13px;font-weight:600;color:var(--v3)}
 .area dd{margin:2px 0 0;font-size:15px;line-height:1.5;color:#C2CFD6}
-.export{align-self:flex-start;font:600 13px var(--sans);color:var(--mist);background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:background .2s,border-color .2s}
-.export:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
-.export svg{width:14px;height:14px}
 .xr-scan{animation:xrscan 4.8s cubic-bezier(.45,0,.55,1) infinite}
 @keyframes xrscan{0%{transform:translateY(-10px);opacity:0}8%{opacity:1}55%{transform:translateY(190px);opacity:1}60%,100%{transform:translateY(190px);opacity:0}}
 .xr-contour{stroke-dasharray:1;stroke-dashoffset:1;animation:contour 4.8s cubic-bezier(.45,0,.55,1) infinite}
@@ -393,7 +390,7 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
 }
 @media print{
   body{background:#fff;font-size:11pt}
-  .nav,.progress,.deck,.dots,#mesh,.ctas,.pipe,.stages,.viz,.export,.cms,.bgnum,.p-mc{display:none!important}
+  .nav,.progress,.deck,.dots,#mesh,.hint,.pipe,.stages,.viz,.cms,.bgnum,.p-mc{display:none!important}
   .chapter{min-height:0;padding:28px 0;display:block;break-inside:avoid-page}
   .chapter.dark{background:#fff;color:var(--ink)} .dark .lead,.panel > p,.spec-list dd,.findings span,.v2 span,.built span,.diag,.area dd{color:#333} .panel,.area{background:#fff;border-color:#ccc} .panel h3,.area h3,.findings b,.v2 b,.built b,.paper b,.g-head,.inv-row,.diag b{color:var(--ink)}
   .v2 li{opacity:1!important;transform:none!important}
@@ -439,10 +436,7 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
         <dt>Standing</dt><dd>3.68 cumulative GPA, Dean's List every semester</dd>
         <dt>Working</dt><dd>Software Developer, CMIT NYCE (since June 2025)</dd>
       </dl>
-      <div class="ctas fade d3">
-        <button class="btn primary" type="button" data-go="1">Begin</button>
-        <a class="btn ghost" href="#research">Research interests</a>
-      </div>
+      <p class="hint fade d3"><kbd>←</kbd><kbd>→</kbd> to navigate, <kbd>F</kbd> for full screen</p>
     </div>
   </div>
 </section>
@@ -587,7 +581,7 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
   <div class="wrap">
     <p class="kicker" data-r><b>05</b> Validation framework</p>
     <h2 class="title split">I built a validation pipeline, then validated the validator.</h2>
-    <p class="lead" data-r>An independent project: a parallelized Python pipeline that generates futures trading strategies from Sierra Chart one-minute data, backtests them, and runs five stress tests on each. Before building on its results, I audited it the way a reviewer would, tracing every reported number back to the code and the result files. Version two is designed around what that audit found.</p>
+    <p class="lead" data-r>An independent project: a parallelized Python pipeline that generates futures trading strategies from Sierra Chart one-minute data, backtests them, and runs five stress tests on each. Before building on its results, I conducted an in-depth review of my own pipeline, tracing every reported number back to the code and the result files. Version two is designed around what that analysis found.</p>
     <div class="stats">
       <div class="panel p-spec" data-r>
         <h3>What I built</h3>
@@ -623,10 +617,10 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
           <div><b data-count="225">0</b><span>MNQ marked paper-ready</span></div>
           <div><b data-count="219">0</b><span>M2K marked paper-ready</span></div>
         </div>
-        <p class="illus">Version one's grades, before the audit. The findings below are why they are being recomputed.</p>
+        <p class="illus">Version one's grades, before my review. Version two recomputes them with the improvements below.</p>
       </div>
 
-      <p class="audit-label" data-r>The audit</p>
+      <p class="section-label" data-r>My analysis</p>
 
       <div class="panel p-mc" data-r>
         <h3>Checking that every test can fail</h3>
@@ -653,7 +647,7 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
         </div>
       </div>
       <div class="panel p-claims" data-r>
-        <h3>What else the audit found</h3>
+        <h3>What else my analysis found</h3>
         <ul class="findings">
           <li><b>Time windows</b><span>The six-window check ran inside the same 12 months used for selection, so it measured consistency, not out-of-sample performance.</span></li>
           <li><b>Held-out data</b><span>Version one produced no out-of-sample results.</span></li>
@@ -679,39 +673,39 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
   <span class="bgnum" aria-hidden="true">06</span>
   <div class="wrap">
     <p class="kicker" data-r><b>06</b> Research interests</p>
-    <h2 class="title split">What the audit taught me to care about.</h2>
-    <p class="lead" data-r>None of the defects I found are specific to markets. Each one is a general failure mode of quantitative research, and these are the problems I want to become rigorous at.</p>
+    <h2 class="title split">The questions my own analysis raised.</h2>
+    <p class="lead" data-r>Reviewing my pipeline in depth sharpened what I find most interesting about quantitative research. None of these questions are specific to markets. They apply to any analysis built on large searches, simulation or raw instrument data.</p>
     <div class="map">
-      <div class="map-head" aria-hidden="true"><span>Found in my pipeline</span><span></span><span>The general principle</span></div>
+      <div class="map-head" aria-hidden="true"><span>From my own analysis</span><span></span><span>The research question</span></div>
       <div class="map-row" data-r>
-        <div class="from"><h3>No held-out data</h3><p>Every test ran on the same data used to choose the strategies.</p></div>
+        <div class="from"><h3>Selection and evaluation</h3><p>Keeping the data used to choose a model separate from the data used to judge it.</p></div>
         <div class="link" aria-hidden="true"><i></i></div>
-        <div class="to"><h4>Held-out evaluation</h4><p>A result only counts if it is measured on data that played no part in choosing the model.</p></div>
+        <div class="to"><h4>Held-out evaluation</h4><p>How to design evaluation so that a reported result reflects data that played no part in choosing the model.</p></div>
       </div>
       <div class="map-row" data-r>
-        <div class="from"><h3>Millions of trials</h3><p>On the order of 10<sup>6</sup> to 10<sup>7</sup> simulations per instrument.</p></div>
+        <div class="from"><h3>Search at scale</h3><p>A pipeline exploring on the order of 10<sup>6</sup> to 10<sup>7</sup> combinations per instrument.</p></div>
         <div class="link" aria-hidden="true"><i></i></div>
-        <div class="to"><h4>Multiple comparisons</h4><p>Search enough combinations and the best one looks strong by chance. Significance has to account for the true number of trials.</p></div>
+        <div class="to"><h4>Multiple comparisons</h4><p>How to judge significance when the best result comes out of a very large search.</p></div>
       </div>
       <div class="map-row" data-r>
-        <div class="from"><h3>A test that could not fail</h3><p>Reordering trades never changes their total.</p></div>
+        <div class="from"><h3>Test design</h3><p>Confirming that each stress test can actually distinguish a strong result from a weak one.</p></div>
         <div class="link" aria-hidden="true"><i></i></div>
-        <div class="to"><h4>Validating the validator</h4><p>Before trusting a test, confirm it is capable of failing.</p></div>
+        <div class="to"><h4>Validating the validator</h4><p>How to verify that a statistical test is sensitive to the failure it is meant to detect.</p></div>
       </div>
       <div class="map-row" data-r>
-        <div class="from"><h3>A tenfold unit error</h3><p>Two modules used different dollars per point.</p></div>
+        <div class="from"><h3>Consistency across stages</h3><p>One shared specification for units and parameters across every module.</p></div>
         <div class="link" aria-hidden="true"><i></i></div>
-        <div class="to"><h4>Invariant checks</h4><p>One source of truth for units, and automatic checks for results that are impossible by construction.</p></div>
+        <div class="to"><h4>Invariant checks</h4><p>Building automatic checks into a pipeline that flag results that should be impossible.</p></div>
       </div>
       <div class="map-row" data-r>
-        <div class="from"><h3>Corrupted trade logs</h3><p>Timestamps from 1994 and impossible hold times.</p></div>
+        <div class="from"><h3>Data integrity</h3><p>Validating raw records before computing anything from them.</p></div>
         <div class="link" aria-hidden="true"><i></i></div>
-        <div class="to"><h4>Data integrity before inference</h4><p>Validate raw records before interpreting anything computed from them.</p></div>
+        <div class="to"><h4>Integrity before inference</h4><p>How to catch corrupted or inconsistent input early, before it shapes a conclusion.</p></div>
       </div>
     </div>
     <div class="openq" data-r>
       <svg viewBox="0 0 38 38" fill="none" stroke="#C5050C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="19" cy="19" r="16"/><path d="M14.5 14.5a4.5 4.5 0 1 1 6.3 4.1c-1.2.6-1.8 1.4-1.8 2.7v.7"/><circle cx="19" cy="27" r=".6" fill="#C5050C"/></svg>
-      <div><h4>Why this matters beyond markets</h4><p>Any analysis that selects among many models, relies on simulation, or ingests raw instrument output can fail in exactly these ways. I want to learn how researchers guard against them on real scientific data.</p></div>
+      <div><h4>Why this matters beyond markets</h4><p>Any analysis that selects among many models, relies on simulation or ingests raw instrument output faces these same questions. I want to learn how researchers answer them on real scientific data.</p></div>
     </div>
   </div>
 </section>
@@ -727,7 +721,7 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
       <div class="tile" data-r><div class="tile-top"><h3>Web design</h3><span class="lvl">Production</span></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Redesigned and rebuilt a production platform end to end, including its content-management admin and cloud deployment.</p></div>
       <div class="tile" data-r><div class="tile-top"><h3>Python</h3><span class="lvl">Production</span></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p>Primary language for data pipelines, parallel computation, simulation and performance analytics.</p></div>
       <div class="tile" data-r><div class="tile-top"><h3>R</h3><span class="lvl">Coursework</span></div><div class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Used throughout Data Science Modeling I and II for statistical modeling and analysis.</p></div>
-      <div class="tile" data-r><div class="tile-top"><h3>Statistics and validation</h3><span class="lvl">Applied</span></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Built a regime-conditioned Monte Carlo stress-testing pipeline, then audited it end to end and documented its statistical and unit errors.</p></div>
+      <div class="tile" data-r><div class="tile-top"><h3>Statistics and validation</h3><span class="lvl">Applied</span></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Built a regime-conditioned Monte Carlo stress-testing pipeline, then reviewed it end to end and used the findings to design version two.</p></div>
       <div class="tile" data-r><div class="tile-top"><h3>Large-scale data</h3><span class="lvl">Applied</span></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p>Structuring 3,000+ unstructured files across 100+ clients into validated per-client datasets, plus Big Data Systems coursework.</p></div>
       <div class="tile" data-r><div class="tile-top"><h3>Machine learning</h3><span class="lvl">Coursework</span></div><div class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></div><p>Foundations from AI, data science modeling and linear algebra coursework; a locally hosted language model in a pipeline under development.</p></div>
       <div class="tile gap" data-r><div class="tile-top"><h3>Computer vision</h3><span class="lvl">To develop</span></div><div class="bars"><i></i><i></i><i></i><i></i></div><p>No hands-on experience yet.</p></div>
@@ -809,8 +803,8 @@ footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--rule);display
         <p class="lead" data-r>I would welcome the opportunity to contribute to the lab's website and research, and to learn from the people doing this work. I'm glad to go deeper on any part of this presentation.</p>
         <div class="links" data-r>
           <a class="btn primary" href="mailto:dteckchandan@wisc.edu">dteckchandan@wisc.edu</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/daksh-teckchandani-081898310/?isSelfProfile=true" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/daksh2048" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/YOUR-LINKEDIN-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </div>
@@ -964,7 +958,6 @@ function prev() {
 }
 $('#nextBtn').addEventListener('click', next);
 $('#prevBtn').addEventListener('click', prev);
-$$('[data-go]').forEach(b => b.addEventListener('click', () => go(+b.dataset.go)));
 
 addEventListener('keydown', e => {
   if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input,textarea,select,[contenteditable]')) return;
@@ -1280,7 +1273,7 @@ if (finePointer && !reduce) $$('.tilt').forEach(el => {
 })();
 
 /* =========================================================
-   JS 9. 3D BONE: PROCEDURAL FE MESH, STRESS SHADING, OBJ EXPORT
+   JS 9. 3D BONE: PROCEDURAL FE MESH, STRESS SHADING
    ========================================================= */
 const Bone = (function buildBone() {
   const NU = 60, NV = 22, V = [], F = [];
@@ -1382,8 +1375,6 @@ const Bone = (function buildBone() {
   const end = () => { drag = null; cv.classList.remove('dragging'); lastInteract = performance.now(); };
   cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
   addEventListener('resize', () => { S = fitCanvas(cv); if (reduce) render(0); });
-
-  /* Export the rest-pose mesh as a Wavefront OBJ (quads, 1-indexed). */
 
 })();
 
