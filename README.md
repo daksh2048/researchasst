@@ -28,6 +28,7 @@ The whole site is `raWebsite.html`. There is no build step, no framework and no 
 | `→` `↓` `Space` `Page Down` | Next. If the current chapter extends below the screen, it scrolls within the chapter first, then advances to the next one. |
 | `←` `↑` `Shift+Space` `Page Up` | Previous, following the same logic in reverse |
 | `Home` / `End` | First / last chapter |
+| **Begin** button (home page) | Enters full screen and stays on the introduction. Hidden on browsers that cannot show pages full screen, such as iPhone Safari. |
 | `F` | Toggle full screen and enable scroll snapping |
 | Bottom control bar | Chapter counter, chapter title, previous/next buttons |
 | Dots on the right (wide screens) | Jump to any chapter. Hover over a dot to see its title. |
@@ -35,7 +36,7 @@ The whole site is `raWebsite.html`. There is no build step, no framework and no 
 Suggested setup for an in-person interview:
 
 - Open the site in Chrome on a laptop.
-- Press `F`.
+- Click **Begin** to switch to full screen.
 - Advance with the arrow keys.
 - Every animation starts when its chapter comes into view, so each section opens with its own sequence.
 
@@ -75,7 +76,7 @@ Every chapter is a `<section class="chapter">` with an `id` and a `data-title`. 
 
 | # | `id` | Title | What it shows | Animation |
 | --- | --- | --- | --- | --- |
-| 1 | `intro` | Introduction | Headline, summary, education, cumulative GPA, current role | Interactive 2D finite-element mesh that deforms under the cursor and is colored by strain; staggered headline reveal |
+| 1 | `intro` | Introduction | Headline, summary, education, cumulative GPA, current role, **Begin** button and arrow-key hint | Interactive 2D finite-element mesh that deforms under the cursor and is colored by strain; staggered headline reveal |
 | 2 | `why` | Why this lab | Motivation drawn from the cover letter; three working principles | Word-by-word heading reveal; icons that draw themselves; cards that tilt with the cursor |
 | 3 | `website` | The lab website | Production work at CMIT NYCE and the four-step plan for the lab site | Live editor demo: fields type themselves, **Publish** is pressed, and a new lab member appears on the preview |
 | 4 | `pipeline` | Report automation | The in-development report pipeline, with key figures | Counting statistics; files flow from scattered raw output into a validated grid and then into a report that is written and stamped "Reviewed" |
